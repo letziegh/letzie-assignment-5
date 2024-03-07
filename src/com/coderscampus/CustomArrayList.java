@@ -13,25 +13,23 @@ public class CustomArrayList<T> implements CustomList<T> {
 	
 	@Override
 	public boolean add(T item) {
-		items[index]= item;
-		index++;
+	if(item==null) {
 		
+		return true;
+	}
+		
+
+		System.out.println(index);
+	if (items.length == index) {
+			items = Arrays.copyOf(items, items.length*2);	
+			items[index]= item;
+			index++;
+		}else {
+			items[index]= item;
+			index++;
+		}
 	
-		
-	//	System.out.println(item);
-//		if(items.length == index) {
-//			items = Arrays.copyOf(items, 10);
-//			
-//		}
-	if (items.length == index+1) {
-			items = Arrays.copyOf(items, 20);		
-		}
-	else if (items.length == index+1) {
-			items = Arrays.copyOf(items, 40);
-		}
-//		else(items.length==null) {
-//			System.out.println(" ");
-//		}
+	
 		return true;
 	}
 
@@ -45,8 +43,8 @@ public class CustomArrayList<T> implements CustomList<T> {
 	@Override
 	public T get(int index) {
 		
-	//	System.out.println();
 		return (T) items[index];
+		
 	}
 
 }
